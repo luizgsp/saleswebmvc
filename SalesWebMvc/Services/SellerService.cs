@@ -18,12 +18,11 @@ namespace SalesWebMvc.Services
 
         public List<Seller> FindAll()
         {
-            return _context.Seller.ToList();
+            return _context.Seller.OrderBy(x => x.Name).ToList();
         }
 
         public void Insert(Seller obj)
         {
-            obj.Departament = _context.Departament.First();
             _context.Add(obj);
             _context.SaveChanges();
         }
