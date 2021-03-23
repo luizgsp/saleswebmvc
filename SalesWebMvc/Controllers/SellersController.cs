@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace SalesWebMvc.Controllers
 {
@@ -36,16 +37,22 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departaments = _departamentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departaments = departaments };
+                return View(viewModel);
+            }
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Delete(int? id)
         {
-            if (id == null) { return NotFound(); }
+            if (id == null) { return RedirectToAction(nameof(Error), new { message = "Id não foi fornecido!"}); }
 
             var obj = _sellerService.FindById(id.Value);
-            if (obj == null) { return NotFound(); }
+            if (obj == null) { return RedirectToAction(nameof(Error), new { message = "Id não encontrado!" }); }
             return View(obj);
         }
 
@@ -59,18 +66,18 @@ namespace SalesWebMvc.Controllers
 
         public IActionResult Details(int? id)
         {
-            if (id == null) { return NotFound(); }
+            if (id == null) { return RedirectToAction(nameof(Error), new { message = "Id não fornecido!" }); }
 
             var obj = _sellerService.FindById(id.Value);
-            if (obj == null) { return NotFound(); }
+            if (obj == null) { return RedirectToAction(nameof(Error), new { message = "Id não encontrado!" }); }
             return View(obj);
         }
 
         public IActionResult Edit(int? id)
         {
-            if (id == null) { return NotFound(); }
+            if (id == null) { return RedirectToAction(nameof(Error), new { message = "Id não fornecido!" }); }
             var obj = _sellerService.FindById(id.Value);
-            if (obj == null) { return NotFound(); }
+            if (obj == null) { return RedirectToAction(nameof(Error), new { message = "Id não encontrado!" }); }
 
             List<Departament> departaments = _departamentService.FindAll();
             SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departaments = departaments };
@@ -80,21 +87,34 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
-            if (id != seller.Id) { return BadRequest(); }
+            if (!ModelState.IsValid) 
+            {
+                var departaments = _departamentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departaments = departaments };
+                return View(viewModel); 
+            }
+
+            if (id != seller.Id) { return RedirectToAction(nameof(Error), new { message = "Id não inválido!" }); }
             try
             {
                 _sellerService.Update(seller);
                 return RedirectToAction(nameof(Index));
             }
-            catch (NotFoundException)
+            catch (ApplicationException e)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = e.Message });
             }
-            catch (DbConcurrencyException)
-            {
-                return BadRequest();
-            }
+        }
 
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+
+            return View(viewModel);
         }
     }
 }
