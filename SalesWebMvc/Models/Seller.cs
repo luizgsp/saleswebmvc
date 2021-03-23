@@ -30,7 +30,7 @@ namespace SalesWebMvc.Models
         [Required(ErrorMessage = "{0} requerido")]
         [Range(100.0, 100000.0, ErrorMessage ="O {0} deve estar na faixa de {1} a {2}")]
         [Display(Name = "Salário Base")]
-        [DisplayFormat(DataFormatString ="{0:F2}")]
+        [DisplayFormat(DataFormatString ="{0:C2}")]
         public double BaseSalary { get; set; }
 
         [Display(Name = "Departamento")]
