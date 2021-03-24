@@ -12,22 +12,27 @@ namespace SalesWebMvc.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "{0} requerido")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage ="A {0} deve conter entre {2} e {1} caracteres!")]
         [Display(Name = "Descrição")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "{0} requerido")]
+        [StringLength(3, MinimumLength = 1, ErrorMessage ="A {0} deve conter entre {2} e {1} caracteres!")]
         [Display(Name = "Unidade")]
         public string Unity { get; set; }
 
         [Required(ErrorMessage = "{0} requerido")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage ="A {0} deve conter entre {2} e {1} caracteres!")]
         [Display(Name = "Referência")]
         public string Reference { get; set; }
 
         [Required(ErrorMessage = "{0} requerido")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage ="A {0} deve conter entre {2} e {1} caracteres!")]
         [Display(Name = "Marca")]
         public string Brand { get; set; }
 
         [Required(ErrorMessage = "{0} requerido")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage ="A {0} deve conter entre {2} e {1} caracteres!")]
         [Display(Name = "Medida")]
         public string Measure { get; set; }
 
@@ -114,21 +119,27 @@ namespace SalesWebMvc.Models
         public bool SubstitutionTax { get; set; }
 
         [Display(Name = "Classificação Fiscal")]
+        [StringLength(20, ErrorMessage ="A {0} deve conter até {1} caracteres!")]
         public string FiscalScrore { get; set; }
 
         [Display(Name = "CFOP")]
+        [StringLength(20, ErrorMessage = "O {0} deve conter até {1} caracteres!")]
         public string Cfop { get; set; }
 
         [Display(Name = "Natureza da Operação")]
+        [StringLength(20, ErrorMessage = "A {0} deve conter até {1} caracteres!")]
         public string NatOper { get; set; }
 
         [Display(Name = "Código do Produto")]
+        [StringLength(20, ErrorMessage = "O {0} deve conter até {1} caracteres!")]
         public string CodeProduct { get; set; }
 
         [Display(Name = "Código do Fornecedor")]
+        [StringLength(20, ErrorMessage = "O {0} deve conter até {1} caracteres!")]
         public string CodeSupplier { get; set; }
 
         [Display(Name = "Código de Barras")]
+        [StringLength(20, ErrorMessage = "O {0} deve conter até {1} caracteres!")]
         public string BarCode { get; set; }
 
         [Display(Name = "Data da Última Compra")]
@@ -140,6 +151,8 @@ namespace SalesWebMvc.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime LastDateSale { get; set; }
+
+        public Product() { }
 
         public Product(int id, string description, string unity, string reference, string brand, string measure, string image, ProductStatus status, Category category, Supplier supplier, DateTime createDate, DateTime updateDate, decimal unitPrice, decimal stock, decimal stockMin, decimal stockMax, decimal mva, decimal icmsTax, decimal ipiTax, decimal additionTax, decimal discountTax, decimal shippingTax, decimal multiply, bool substitutionTax, string fiscalScrore, string cfop, string natOper, string codeProduct, string codeSupplier, string barCode, DateTime lastDateBuy, DateTime lastDateSale)
         {

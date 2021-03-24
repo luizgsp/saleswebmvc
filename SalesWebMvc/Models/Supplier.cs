@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,6 +30,11 @@ namespace SalesWebMvc.Models
         public ICollection<Address> Addresses { get; set; } = new List<Address>();
         public DateTime CreateDate { get; set; }
         public DateTime UptadeDate { get; set; }
+
+        [Display(Name = "Produtos")]
+        public ICollection<Product> Products { get; set; } = new List<Product>();
+
+        public Supplier() { }
 
         public Supplier(int id, int personType, string cnpjCpf, string name, string nickName, bool status, string identification, string stateRegistration, string municipalRegistration, string contact, string email, string website, string image, string numBank, string bankName, string agencyBank, string account, decimal creditLimit, DateTime createDate, DateTime uptadeDate)
         {

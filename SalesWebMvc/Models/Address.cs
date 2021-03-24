@@ -18,6 +18,11 @@ namespace SalesWebMvc.Models
         public string UF { get; set; }
         public string PostalCode { get; set; }
 
+        public int CustomerId { get; set; }
+        public int SupplierId { get; set; }
+
+        public Address() { }
+
         public Address(int id, TypeAddress type, string location, string number, string complement, string block, string city, string uF, string postalCode)
         {
             Id = id;

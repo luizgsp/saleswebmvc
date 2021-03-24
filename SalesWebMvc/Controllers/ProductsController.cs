@@ -27,5 +27,25 @@ namespace SalesWebMvc.Controllers
             var list = await _productService.FindAllAsync();
             return View(list);
         }
+
+        public async Task<IActionResult> Create()
+        {
+            var categories = await _categoryService.FindAllAsync();
+            var viewModel = new ProductFormViewModel { Categories = categories };
+            return View(viewModel);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Product obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                var categories = await _categoryService.FindAllAsync();
+                var viewModel = new ProductFormViewModel { Categories = categories };
+                return View(viewModel);
+            }
+            await _productService.InsertAsync(obj);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

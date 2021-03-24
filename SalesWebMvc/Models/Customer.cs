@@ -28,6 +28,7 @@ namespace SalesWebMvc.Models
         public DateTime CreateDate { get; set; }
         public DateTime UptadeDate { get; set; }
 
+        public Customer() { }
         public Customer(int id, int personType, string cnpjCpf, string name, string nickName, bool status, string identification, string stateRegistration, string municipalRegistration, string contact, string email, string website, string image, string numBank, string bankName, string agencyBank, string account, decimal creditLimit, DateTime createDate, DateTime uptadeDate)
         {
             Id = id;

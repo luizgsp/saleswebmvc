@@ -16,6 +16,8 @@ namespace SalesWebMvc.Models
         public int SalesRecordId { get; set; }
         public SalesRecord SalesRecord { get; set; }
 
+        public SalesItems() { }
+
         public SalesItems(int id, Product product, decimal price, decimal quantity, string note, SalesRecord salesRecord)
         {
             Id = id;

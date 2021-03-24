@@ -33,6 +33,7 @@ namespace SalesWebMvc.Controllers
             var viewModel = new SellerFormViewModel { Departaments = departaments };
             return View(viewModel);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Seller seller)

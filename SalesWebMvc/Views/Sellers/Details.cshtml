@@ -39,6 +39,12 @@
         <dd>
             @Html.DisplayFor(model => model.Departament.Name)
         </dd>
+        <dt>
+            Total Vendas do Mês Atual
+        </dt>
+        <dd>
+            @Model.TotalSales(new DateTime(DateTime.Now.Year,1,1), DateTime.Now).ToString("C2")
+        </dd>
     </dl>
 </div>
 <div>

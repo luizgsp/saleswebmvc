@@ -1,0 +1,57 @@
+﻿@model SalesWebMvc.Models.ViewModels.ProductFormViewModel
+
+@{
+    ViewData["Title"] = "Novo Produto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Vendedor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Product.Description" class="control-label"></label>
+                <input asp-for="Product.Description" class="form-control" />
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+            <div class="row">
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.Unity" class="control-label"></label>
+                    <input asp-for="Product.Unity" class="form-control" />
+                    <span asp-validation-for="Product.Unity" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.Reference" class="control-label"></label>
+                    <input asp-for="Product.Reference" class="form-control" />
+                    <span asp-validation-for="Product.Reference" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.Brand" class="control-label"></label>
+                    <input asp-for="Product.Brand" class="form-control" />
+                    <span asp-validation-for="Product.Brand" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.Measure" class="control-label"></label>
+                    <input asp-for="Product.Measure" class="form-control" />
+                    <span asp-validation-for="Product.Measure" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.CategoryId" class="control-label"></label>
+                <select asp-for="Product.CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "Description"))"
+                        class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

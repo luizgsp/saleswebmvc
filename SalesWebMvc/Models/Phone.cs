@@ -9,5 +9,15 @@ namespace SalesWebMvc.Models
     {
         public int Id { get; set; }
         public string Number { get; set; }
+        public int CustomerId { get; set; }
+        public int SupplierId { get; set; }
+
+        public Phone() { }
+
+        public Phone(int id, string number)
+        {
+            Id = id;
+            Number = number;
+        }
     }
 }

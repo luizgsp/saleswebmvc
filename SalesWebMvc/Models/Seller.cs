@@ -11,7 +11,6 @@ namespace SalesWebMvc.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "{0} requerido")]
         [StringLength(60, MinimumLength = 3, ErrorMessage ="O {0} deve conter entre {2} e {1} caracteres!")]
-
         [Display(Name = "Nome")]
         public string Name { get; set; }
 

@@ -11,7 +11,8 @@ namespace SalesWebMvc.Models
         public int  Id { get; set; }
 
         [Display(Name = "Departamento")]
-        public string  Name { get; set; }
+        [Required(ErrorMessage = "{0} requerido")]
+        public string Name { get; set; }
 
         [Display(Name = "Vendedores")]
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
