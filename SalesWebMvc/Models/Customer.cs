@@ -89,10 +89,10 @@ namespace SalesWebMvc.Models
         public DateTime UptadeDate { get; set; }
 
         [Display(Name = "Observações")]
-        public ICollection<string> Notes { get; set; } = new List<string>();
+        public ICollection<Notes> Notes { get; set; } = new List<Notes>();
 
         [Display(Name = "Histórico")]
-        public ICollection<string> History { get; set; } = new List<string>();
+        public ICollection<History> History { get; set; } = new List<History>();
 
         public Customer() { }
 
@@ -125,9 +125,34 @@ namespace SalesWebMvc.Models
             Phones.Add(obj);
         }
 
+        public void RemovePhones(Phone obj)
+        {
+            Phones.Remove(obj);
+        }
+
         public void AddAddress(Address obj)
         {
             Addresses.Add(obj);
+        }
+
+        public void RemoveAddress(Address obj)
+        {
+            Addresses.Remove(obj);
+        }
+
+        public void AddNote(Notes note)
+        {
+            Notes.Add(note);
+        }
+
+        public void RemoveNote(Notes note)
+        {
+            Notes.Remove(note);
+        }
+
+        public void AddHistory(History hr)
+        {
+            History.Add(hr);
         }
     }
 }

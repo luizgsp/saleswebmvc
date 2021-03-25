@@ -18,7 +18,7 @@ namespace SalesWebMvc.Models
         public ICollection<Product> Products { get; set; } = new List<Product>();
 
         [Display(Name = "Histórico")]
-        public ICollection<string> History { get; set; } = new List<string>();
+        public ICollection<History> History { get; set; } = new List<History>();
 
         public Category() { }
 
@@ -31,6 +31,16 @@ namespace SalesWebMvc.Models
         public void AddProducts(Product obj)
         {
             Products.Add(obj);
+        }
+
+        public void RemoveProducts(Product obj)
+        {
+            Products.Remove(obj);
+        }
+
+        public void AddHistory(History hr)
+        {
+            History.Add(hr);
         }
     }
 }

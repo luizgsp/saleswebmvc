@@ -39,10 +39,10 @@ namespace SalesWebMvc.Models
         public int DepartamentId { get; set; }
 
         [Display(Name = "Observações")]
-        public ICollection<string> Notes { get; set; } = new List<string>();
+        public ICollection<Notes> Notes { get; set; } = new List<Notes>();
 
         [Display(Name = "Histórico")]
-        public ICollection<string> History { get; set; } = new List<string>();
+        public ICollection<History> History { get; set; } = new List<History>();
 
         [Display(Name = "Vendas")]
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
@@ -67,6 +67,21 @@ namespace SalesWebMvc.Models
         public void RemoveSales(SalesRecord sr)
         {
             Sales.Remove(sr);
+        }
+
+        public void AddNote(Notes note)
+        {
+            Notes.Add(note);
+        }
+
+        public void RemoveNote(Notes note)
+        {
+            Notes.Remove(note);
+        }
+
+        public void AddHistory(History hr)
+        {
+            History.Add(hr);
         }
 
         public double TotalSales(DateTime initial, DateTime final)

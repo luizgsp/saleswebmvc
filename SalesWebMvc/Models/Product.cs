@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SalesWebMvc.Models
 {
@@ -158,10 +156,10 @@ namespace SalesWebMvc.Models
         public DateTime LastDateSale { get; set; }
 
         [Display(Name = "Observações")]
-        public ICollection<string> Notes { get; set; } = new List<string>();
+        public ICollection<Notes> Notes { get; set; } = new List<Notes>();
 
         [Display(Name = "Histórico")]
-        public ICollection<string> History { get; set; } = new List<string>();
+        public ICollection<History> History { get; set; } = new List<History>();
 
         public Product() { }
 
@@ -254,6 +252,21 @@ namespace SalesWebMvc.Models
         public decimal SalePriceMax
         {
             get { return SalePriceMin + AdditionValue; }
+        }
+
+        public void AddNote(Notes note)
+        {
+            Notes.Add(note);
+        }
+
+        public void RemoveNote(Notes note)
+        {
+            Notes.Remove(note);
+        }
+
+        public void AddHistory(History hr)
+        {
+            History.Add(hr);
         }
     }
 }

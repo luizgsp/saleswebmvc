@@ -8,7 +8,7 @@ namespace SalesWebMvc.Models
     public class Departament
     {
         [Display(Name = "Código")]
-        public int  Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Departamento")]
         [Required(ErrorMessage = "{0} requerido")]
@@ -18,7 +18,7 @@ namespace SalesWebMvc.Models
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
         [Display(Name = "Histórico")]
-        public ICollection<string> History { get; set; } = new List<string>();
+        public ICollection<History> History { get; set; } = new List<History>();
 
         public Departament() { }
 
@@ -36,6 +36,11 @@ namespace SalesWebMvc.Models
         public double TotalSales(DateTime initial, DateTime final)
         {
             return Sellers.Sum(seller => seller.TotalSales(initial, final));
+        }
+
+        public void AddHistory(History hr)
+        {
+            History.Add(hr);
         }
     }
 }
