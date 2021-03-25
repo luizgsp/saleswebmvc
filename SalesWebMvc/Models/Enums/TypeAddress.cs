@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SalesWebMvc.Models.Enums
 {
     public enum TypeAddress : int
     {
-        Residencial,
-        Comercial,
-        Entrega,
-        Cobranca
+        [Display(Name = "Residencial")]
+        Residential,
+        [Display(Name = "Comercial")]
+        Commercial,
+        [Display(Name = "Entrega")]
+        Delivery,
+        [Display(Name = "Cobrança")]
+        Charge
     }
 }

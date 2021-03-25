@@ -31,6 +31,12 @@ namespace SalesWebMvc.Models
         public DateTime CreateDate { get; set; }
         public DateTime UptadeDate { get; set; }
 
+        [Display(Name = "Observações")]
+        public ICollection<string> Notes { get; set; } = new List<string>();
+
+        [Display(Name = "Histórico")]
+        public ICollection<string> History { get; set; } = new List<string>();
+
         [Display(Name = "Produtos")]
         public ICollection<Product> Products { get; set; } = new List<Product>();
 

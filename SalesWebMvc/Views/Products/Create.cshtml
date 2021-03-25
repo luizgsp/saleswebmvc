@@ -11,12 +11,29 @@
 <div class="row">
     <div class="col-md-12">
         <form asp-action="Create">
-            <div class="form-group">
-                <label asp-for="Product.Description" class="control-label"></label>
-                <input asp-for="Product.Description" class="form-control" />
-                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            <div class="panel panel-default row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.CodeProduct" class="control-label"></label>
+                    <input asp-for="Product.CodeProduct" class="form-control" />
+                    <span asp-validation-for="Product.CodeProduct" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-7">
+                    <label asp-for="Product.Description" class="control-label"></label>
+                    <input asp-for="Product.Description" class="form-control" />
+                    <span asp-validation-for="Product.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="Product.Status" class="control-label"></label>
+                    <select asp-for="Product.Status"  class="form-control">
+                        <option id="0">Ativo</option>
+                        <option id="1">Inativo</option>
+                        <option id="2">Suspenso</option>
+                    </select>
+                    <span asp-validation-for="Product.Status" class="text-danger"></span>
+                </div>
             </div>
-            <div class="row">
+
+            <div class="panel panel-default row">
 
                 <div class="form-group col-md-3">
                     <label asp-for="Product.Unity" class="control-label"></label>
@@ -40,9 +57,111 @@
                 </div>
             </div>
             <div class="form-group">
+                <label asp-for="Product.Image" class="control-label"></label>
+            </div>
+
+            <div class="panel panel-default row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.UnitPrice" class="control-label"></label>
+                    <input type="number" min="0.00" max="100000.00" step="0.01" asp-for="Product.UnitPrice" class="form-control" />
+                    <span asp-validation-for="Product.UnitPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.Stock" class="control-label"></label>
+                    <input type="number" min="0.00" max="100000.00" step="0.01" asp-for="Product.Stock" class="form-control" />
+                    <span asp-validation-for="Product.Stock" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.StockMin" class="control-label"></label>
+                    <input type="number" min="0.00" max="100000.00" step="0.01" asp-for="Product.StockMin" class="form-control" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.StockMax" class="control-label"></label>
+                    <input type="number" min="0.00" max="100000.00" step="0.01" asp-for="Product.StockMax" class="form-control" />
+                </div>
+            </div>
+            <div class="panel panel-default row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.ShippingTax" class="control-label"></label>
+                    <input type="number" min="0.00" max="999.00" step="0.01" asp-for="Product.ShippingTax" class="form-control" />
+                    <span asp-validation-for="Product.ShippingTax" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.IpiTax" class="control-label"></label>
+                    <input type="number" min="0.00" max="100.00" step="0.01" asp-for="Product.IpiTax" class="form-control" />
+                    <span asp-validation-for="Product.IpiTax" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.IcmsTax" class="control-label"></label>
+                    <input type="number" min="0.00" max="100.00" step="0.01" asp-for="Product.IcmsTax" class="form-control" />
+                    <span asp-validation-for="Product.IcmsTax" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.Mva" class="control-label"></label>
+                    <input type="number" min="0.00" max="100.00" step="0.01" asp-for="Product.Mva" class="form-control" />
+                    <span asp-validation-for="Product.Mva" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="panel panel-default row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.DiscountTax" class="control-label"></label>
+                    <input type="number" min="0.00" max="100.00" step="0.01" asp-for="Product.DiscountTax" class="form-control" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.AdditionTax" class="control-label"></label>
+                    <input type="number" min="0.00" max="999.00" step="0.01" asp-for="Product.AdditionTax" class="form-control" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.Multiply" class="control-label"></label>
+                    <input type="number" min="0.00" max="999.00" step="0.01" asp-for="Product.Multiply" class="form-control" />
+                    <span asp-validation-for="Product.Multiply" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="panel panel-default row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.SubstitutionTax" class="control-label"></label>
+                    <input type="checkbox" asp-for="Product.SubstitutionTax" class="form-control" />
+                    <span asp-validation-for="Product.SubstitutionTax" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.FiscalScrore" class="control-label"></label>
+                    <input asp-for="Product.FiscalScrore" class="form-control" />
+                    <span asp-validation-for="Product.FiscalScrore" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.Cfop" class="control-label"></label>
+                    <input asp-for="Product.Cfop" class="form-control" />
+                    <span asp-validation-for="Product.Cfop" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.NatOper" class="control-label"></label>
+                    <input asp-for="Product.NatOper" class="form-control" />
+                    <span asp-validation-for="Product.NatOper" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.CodeSupplier" class="control-label"></label>
+                    <input asp-for="Product.CodeSupplier" class="form-control" />
+                    <span asp-validation-for="Product.CodeSupplier" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Product.BarCode" class="control-label"></label>
+                    <input asp-for="Product.BarCode" class="form-control" />
+                    <span asp-validation-for="Product.BarCode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
                 <label asp-for="Product.CategoryId" class="control-label"></label>
                 <select asp-for="Product.CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "Description"))"
                         class="form-control"></select>
+                <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.SupplierId" class="control-label"></label>
+                <select asp-for="Product.SupplierId" asp-items="@(new SelectList(Model.Suppliers, "Id", "Name"))"
+                        class="form-control"></select>
+                <span asp-validation-for="Product.SupplierId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-success" />

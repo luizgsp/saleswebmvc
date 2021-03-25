@@ -17,6 +17,9 @@ namespace SalesWebMvc.Models
         [Display(Name = "Vendedores")]
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
+        [Display(Name = "Histórico")]
+        public ICollection<string> History { get; set; } = new List<string>();
+
         public Departament() { }
 
         public Departament(int id, string name)

@@ -42,15 +42,19 @@ namespace SalesWebMvc.Models
         [Required(ErrorMessage = "{0} requerido")]
         public ProductStatus Status { get; set; }
 
+        [Required(ErrorMessage = "{0} requerido")]
         [Display(Name = "Categoria")]
         public int CategoryId { get; set; }
 
+        [Required(ErrorMessage = "{0} requerido")]
         [Display(Name = "Categoria")]
         public Category Category { get; set; }
 
+        [Required(ErrorMessage = "{0} requerido")]
         [Display(Name = "Fornecedor")]
         public int SupplierId { get; set; }
 
+        [Required(ErrorMessage = "{0} requerido")]
         [Display(Name = "Fornecedor")]
         public Supplier Supplier { get; set; }
 
@@ -98,15 +102,15 @@ namespace SalesWebMvc.Models
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public decimal IpiTax { get; set; }
 
-        [Display(Name = "Estoque")]
+        [Display(Name = "% de Acréscimo")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public decimal AdditionTax { get; set; }
 
-        [Display(Name = "Porcentagem de Desconto")]
+        [Display(Name = "% de Desconto")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public decimal DiscountTax { get; set; }
 
-        [Display(Name = "Porcentagem de Frete")]
+        [Display(Name = "% de Frete")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public decimal ShippingTax { get; set; }
 
@@ -130,6 +134,7 @@ namespace SalesWebMvc.Models
         [StringLength(20, ErrorMessage = "A {0} deve conter até {1} caracteres!")]
         public string NatOper { get; set; }
 
+        [Required(ErrorMessage = "{0} requerido")]
         [Display(Name = "Código do Produto")]
         [StringLength(20, ErrorMessage = "O {0} deve conter até {1} caracteres!")]
         public string CodeProduct { get; set; }
@@ -151,6 +156,12 @@ namespace SalesWebMvc.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime LastDateSale { get; set; }
+
+        [Display(Name = "Observações")]
+        public ICollection<string> Notes { get; set; } = new List<string>();
+
+        [Display(Name = "Histórico")]
+        public ICollection<string> History { get; set; } = new List<string>();
 
         public Product() { }
 

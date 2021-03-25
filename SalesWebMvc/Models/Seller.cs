@@ -38,6 +38,12 @@ namespace SalesWebMvc.Models
         [Display(Name = "Departamento")]
         public int DepartamentId { get; set; }
 
+        [Display(Name = "Observações")]
+        public ICollection<string> Notes { get; set; } = new List<string>();
+
+        [Display(Name = "Histórico")]
+        public ICollection<string> History { get; set; } = new List<string>();
+
         [Display(Name = "Vendas")]
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
