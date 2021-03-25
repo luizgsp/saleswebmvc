@@ -13,6 +13,9 @@
     <thead>
         <tr class="success">
             <th>
+                Ação
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.CodeProduct)
             </th>
             <th>
@@ -32,15 +35,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.SalePriceMin)
             </th>
-            <th>
-                Ação
-            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
         <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square" title="Editar"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye" title="Detalhes"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash" title="Excluir"></i></a>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CodeProduct)
             </td>
@@ -61,11 +66,7 @@
             <td align="right">
                 @Html.DisplayFor(modelItem => item.SalePriceMin)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
-            </td>
+
         </tr>
         }
     </tbody>

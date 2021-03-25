@@ -1,19 +1,20 @@
 ﻿@model IEnumerable<SalesWebMvc.Models.Customer>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clientes";
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-default">Novo Cliente</a>
 </p>
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
-        <tr>
+        <tr class="success">
+            <th>Ação</th>
             <th>
-                
+
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CnpjCpf)
@@ -46,12 +47,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.UptadeDate)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square" title="Editar"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye" title="Detalhes"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash" title="Excluir"></i></a>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Image)
             </td>
@@ -86,12 +92,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UptadeDate)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+
         </tr>
-}
+        }
     </tbody>
 </table>

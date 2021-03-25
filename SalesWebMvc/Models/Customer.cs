@@ -27,7 +27,7 @@ namespace SalesWebMvc.Models
 
         [Display(Name = "Status")]
         [Required(ErrorMessage = "{0} requerido")]
-        public bool Status{ get; set; }
+        public int Status{ get; set; }
 
         [Display(Name = "CI")]
         public string Identification { get; set; }
@@ -96,7 +96,7 @@ namespace SalesWebMvc.Models
 
         public Customer() { }
 
-        public Customer(int id, TypePersonEnum personType, string cnpjCpf, string name, string nickName, bool status, string identification, string stateRegistration, string municipalRegistration, string contact, string email, string website, string image, string numBank, string bankName, string agencyBank, string account, decimal creditLimit, DateTime createDate, DateTime uptadeDate)
+        public Customer(int id, TypePersonEnum personType, string cnpjCpf, string name, string nickName, int status, string identification, string stateRegistration, string municipalRegistration, string contact, string email, string website, string image, string numBank, string bankName, string agencyBank, string account, decimal creditLimit, DateTime createDate, DateTime uptadeDate)
         {
             Id = id;
             PersonType = personType;

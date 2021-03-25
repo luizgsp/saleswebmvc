@@ -11,6 +11,9 @@
     <thead>
         <tr class="success">
             <th>
+                Ação
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -22,33 +25,32 @@
             <th>
                 @Html.DisplayNameFor(model => model.BaseSalary)
             </th>
-            <th>
-                Ação
-            </th>
+
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model)
+        @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BaseSalary)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square" title="Editar"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye" title="Detalhes"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash" title="Excluir"></i></a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaseSalary)
+                </td>
+
+            </tr>
         }
     </tbody>
 

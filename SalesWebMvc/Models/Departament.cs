@@ -17,6 +17,9 @@ namespace SalesWebMvc.Models
         [Display(Name = "Vendedores")]
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
+        [Display(Name = "Funcionários")]
+        public ICollection<Employee> Employees { get; set; } = new List<Employee>();
+
         [Display(Name = "Histórico")]
         public ICollection<History> History { get; set; } = new List<History>();
 
@@ -31,6 +34,16 @@ namespace SalesWebMvc.Models
         public void AddSeller(Seller seller)
         {
             Sellers.Add(seller);
+        }
+
+        public void AddEmployee(Employee obj)
+        {
+            Employees.Add(obj);
+        }
+
+        public void RemoveEmployee(Employee obj)
+        {
+            Employees.Remove(obj);
         }
 
         public double TotalSales(DateTime initial, DateTime final)
